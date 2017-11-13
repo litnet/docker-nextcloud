@@ -1,0 +1,6 @@
+{ "translations": {
+    "Delete" : "Törlés",
+    "Error while deleting a whitelist" : "Hiba történt a kivétellista törlésekor",
+    "Add" : "Hozzáadás"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

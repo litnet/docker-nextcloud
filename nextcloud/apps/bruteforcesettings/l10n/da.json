@@ -1,0 +1,6 @@
+{ "translations": {
+    "Delete" : "Slet",
+    "Error while deleting a whitelist" : "Fejl under sletning af whitelist",
+    "Add" : "Tilføj"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

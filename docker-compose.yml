@@ -1,0 +1,46 @@
+version: '2'
+services:
+  nextcloud:
+    build: ./build
+    ports:
+      - "8080:8888"
+    links:
+      - redis
+      - mysql
+    environment:
+      - UID=9999
+      - GID=9999
+      - UPLOAD_MAX_SIZE=1G
+      - APC_SHM_SIZE=32M
+      - OPCACHE_MEM_SIZE=128
+      - CRON_PERIOD=15m
+      - DB_TYPE=mysql
+      - TZ=Europe/Vilnius
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - ./logs/nginx:/nginx/logs
+      - ./logs/php/:/php/logs
+      - ./nextcloud/data:/data
+      - ./nextcloud/themes:/nextcloud/themes
+      - ./nextcloud/config:/config
+      - ./nextcloud/apps:/apps2
+      - ./simplesamlphp:/simplesamlphp
+      - ./nginx-vhost.conf:/nginx/sites-enabled/cloud.conf:ro
+      - ./php-custom.ini:/php/conf.d/zzz-php-custom.ini
+
+  redis:
+    image: redis:alpine
+    restart: always
+
+  mysql:
+    image: mariadb
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpwd1
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=nextcloud1
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+
