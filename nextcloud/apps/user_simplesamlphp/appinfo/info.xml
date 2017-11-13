@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<info>
+    <id>user_simplesamlphp</id>
+    <name>SimpleSAMLphp authentication</name>
+    <description>Authenticates user against a SimpleSAMLphp backend</description>
+    <licence>AGPL</licence>
+    <author>Andrius Kulbis</author>
+    <version>0.1</version>
+    <dependencies>
+        <owncloud min-version="9.0"/>
+    </dependencies>
+    <namespace>User_SimpleSAML</namespace>
+    <types>
+        <authentication/>
+    </types>
+</info>
+
